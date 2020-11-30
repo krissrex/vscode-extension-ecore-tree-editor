@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { CustomEditorProvider } from "./CustomTreeEditorProvider";
 import { getLogger, initializeLogger } from "./log";
 import { listenToLogSettingsChanges } from "./config/settings-change-listener";
+import { registerXmiCommands } from "./xmi-file-commands";
 
 export function activate(context: vscode.ExtensionContext) {
   initializeLogger(context);
@@ -15,6 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
+  // TODO: remove hello world.
   let disposable = vscode.commands.registerCommand(
     "ecore-tree-editor.helloWorld",
     () => {
@@ -27,6 +29,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(disposable);
+
+  registerXmiCommands(context);
 
   context.subscriptions.push(
     vscode.window.registerCustomEditorProvider(
