@@ -1,18 +1,24 @@
 {
-  "name": "ecore-tree-editor",
-  "publisher": "krissrex",
+	"name": "ecore-tree-editor",
+	"publisher": "krissrex",
 	"displayName": "Ecore Tree-editor",
 	"description": "Modify Ecore and XMI files in a Tree view",
-  "version": "0.0.1",
-  "license": "MIT",
+	"version": "0.0.1",
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
 	"categories": [
 		"Visualization",
 		"Programming Languages"
-  ],
-  "keywords": ["ecore", "model-driven development", "tree-editor", "emf", "eclipse modeling framework"],
+	],
+	"keywords": [
+		"ecore",
+		"model-driven development",
+		"tree-editor",
+		"emf",
+		"eclipse modeling framework"
+	],
 	"activationEvents": [
 		"onCommand:ecore-tree-editor.helloWorld",
 		"onLanguage:ecore",
@@ -25,7 +31,11 @@
 			{
 				"command": "ecore-tree-editor.helloWorld",
 				"title": "Ecore: Hello World"
-			}
+      },
+      {
+        "command": "ecore-tree-editor.xmi-newfile",
+        "title": "Ecore: New Model file..."
+      }
 		],
 		"customEditors": [
 			{
@@ -44,35 +54,35 @@
 					}
 				]
 			}
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "Ecore Tree-editor",
-      "properties": {
-        "ecore-tree-editor.log.loggingLevel": {
-          "type": "string",
-          "enum": [
-            "off",
-            "fatal",
-            "error",
-            "warn",
-            "info",
-            "debug",
-            "trace"
-          ],
-          "default": "info",
-          "description": "The verbosity of logging. The Order is off < fatal < error < warn < info < debug < trace.",
-          "scope": "resource"
-        },
-        "ecore-tree-editor.log.sourceLocationTracking": {
-          "type": "boolean",
-          "default": false,
-          "description": "Should Source Code Location Info be added to log entries, DANGER - May be very slow, only use in debugging scenarios",
-          "scope": "resource"
-        }
-      }
-    }
-  },
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Ecore Tree-editor",
+			"properties": {
+				"ecore-tree-editor.log.loggingLevel": {
+					"type": "string",
+					"enum": [
+						"off",
+						"fatal",
+						"error",
+						"warn",
+						"info",
+						"debug",
+						"trace"
+					],
+					"default": "info",
+					"description": "The verbosity of logging. The Order is off < fatal < error < warn < info < debug < trace.",
+					"scope": "resource"
+				},
+				"ecore-tree-editor.log.sourceLocationTracking": {
+					"type": "boolean",
+					"default": false,
+					"description": "Should Source Code Location Info be added to log entries, DANGER - May be very slow, only use in debugging scenarios",
+					"scope": "resource"
+				}
+			}
+		}
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -95,6 +105,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"@vscode-logging/logger": "^1.2.1"
+		"@vscode-logging/logger": "^1.2.1",
+		"axios": "^0.21.0"
 	}
 }
