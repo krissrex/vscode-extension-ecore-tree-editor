@@ -43,8 +43,35 @@
 					}
 				]
 			}
-		]
-	},
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Ecore Tree-editor",
+      "properties": {
+        "ecore-tree-editor.log.loggingLevel": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fatal",
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "trace"
+          ],
+          "default": "info",
+          "description": "The verbosity of logging. The Order is off < fatal < error < warn < info < debug < trace.",
+          "scope": "resource"
+        },
+        "ecore-tree-editor.log.sourceLocationTracking": {
+          "type": "boolean",
+          "default": false,
+          "description": "Should Source Code Location Info be added to log entries, DANGER - May be very slow, only use in debugging scenarios",
+          "scope": "resource"
+        }
+      }
+    }
+  },
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",

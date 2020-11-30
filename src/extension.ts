@@ -1,10 +1,11 @@
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 import * as vscode from "vscode";
 import { CustomEditorProvider } from "./CustomTreeEditorProvider";
 import { getLogger, initializeLogger } from "./log";
+import { listenToLogSettingsChanges } from "./config/settings-change-listener";
 
 export function activate(context: vscode.ExtensionContext) {
   initializeLogger(context);
+  listenToLogSettingsChanges(context);
   const log = getLogger();
 
   log.info("Extension activated.");

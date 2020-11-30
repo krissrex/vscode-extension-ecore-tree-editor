@@ -7,4 +7,4 @@ import { LogLevel } from "@vscode-logging/logger";
 export const EXTENSION_NAME = "ecore-tree-editor";
 export const EXTENSION_ID = "krissrex.ecore-tree-editor";
 
-export const LOG_LEVEL: LogLevel = "info";
+export const DEFAULT_LOG_LEVEL: LogLevel = "info";

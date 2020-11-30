@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { getExtensionLogger, IVSCodeExtLogger } from "@vscode-logging/logger";
-import { EXTENSION_ID, EXTENSION_NAME, LOG_LEVEL } from "./config";
+import { EXTENSION_ID, EXTENSION_NAME } from "./config";
+import { getLoggingLevelSetting, getSourceLocationTrackingSetting } from "./config/user-settings";
 
 /** Root singleton for all loggers. */
 let logger: IVSCodeExtLogger;
@@ -18,11 +19,11 @@ export function initializeLogger(context: vscode.ExtensionContext): void {
 
   logger = getExtensionLogger({
     extName: EXTENSION_NAME,
-    level: LOG_LEVEL,
+    level: getLoggingLevelSetting(),
     logPath: context.logUri.fsPath,
     logOutputChannel: logOutputChannel,
-    sourceLocationTracking: isNotProduction,
-    logConsole: false
+    sourceLocationTracking: getSourceLocationTrackingSetting() || isNotProduction,
+    logConsole: isNotProduction
   });
 }
 
