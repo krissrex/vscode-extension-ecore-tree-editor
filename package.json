@@ -20,6 +20,7 @@
 		"eclipse modeling framework"
 	],
 	"activationEvents": [
+    "onCustomEditor:ecore-tree-editor.treeEditor",
 		"onCommand:ecore-tree-editor.helloWorld",
 		"onLanguage:ecore",
 		"onLanguage:emof",
@@ -40,7 +41,7 @@
 		"customEditors": [
 			{
 				"viewType": "ecore-tree-editor.treeEditor",
-				"displayName": "Ecore Tree editor",
+				"displayName": "Ecore Tree-editor",
 				"priority": "default",
 				"selector": [
 					{

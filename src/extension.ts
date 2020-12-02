@@ -1,18 +1,28 @@
 import * as vscode from "vscode";
-import { CustomEditorProvider } from "./CustomTreeEditorProvider";
 import { getLogger, initializeLogger } from "./log";
 import { listenToLogSettingsChanges } from "./config/settings-change-listener";
 import { registerXmiCommands } from "./xmi-file-commands";
+import { registerCustomTreeEditor } from "./ecore-custom-editor/registerCustomTreeEditor";
 
 export function activate(context: vscode.ExtensionContext) {
+  try {
   initializeLogger(context);
   listenToLogSettingsChanges(context);
+  } catch (error) {
+    console.error("Failed to start logger!", error);
+  }
   const log = getLogger();
 
   log.info("Extension activated.");
   log.info("Extension mode: %s", context.extensionMode === vscode.ExtensionMode.Production ? "production" : "development");
   log.debug("Logs are written to %s", context.logUri.fsPath);
 
+  registerHelloWorld(context);
+  registerXmiCommands(context);
+  registerCustomTreeEditor(context);
+}
+
+function registerHelloWorld(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
@@ -29,16 +39,6 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(disposable);
-
-  registerXmiCommands(context);
-
-  context.subscriptions.push(
-    vscode.window.registerCustomEditorProvider(
-      "ecore-tree-editor.treeEditor",
-      new CustomEditorProvider(context),
-      { webviewOptions: {}, supportsMultipleEditorsPerDocument: false }
-    )
-  );
 }
 
 // this method is called when your extension is deactivated

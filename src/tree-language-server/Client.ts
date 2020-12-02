@@ -19,7 +19,7 @@ export class TreeClient {
         '{"eClass":"http://www.eclipse.org/emf/2002/Ecore#//EPackage","name":"MyPackage","nsURI":"platform:/TreeLanguageServerProtocol/src/' +
         filename +
         '","nsPrefix":"no.krex.test.ecore"}',
-    });
+    }); // This is emf as json. Can also be xmi if the format is also set to "xmi".
 
     return Axios.post(this.baseUrl + "models", data, {
       params: {
