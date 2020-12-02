@@ -1,5 +1,8 @@
 # ecore-tree-editor README
 
+**This is a default readme for extension. Read [design-doc](design-doc.md) instead.**
+
+
 This is the README for your extension "ecore-tree-editor". After writing up a brief description, we recommend including the following sections.
 
 ## Features
