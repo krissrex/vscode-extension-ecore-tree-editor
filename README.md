@@ -1,4 +1,6 @@
-# ecore-tree-editor README
+# Prototype: VScode extension for an Ecore Tree Editor
+
+This prototype was developed as part of a thesis: https://github.com/krissrex/ntnu-tdt4501-preproject-article.
 
 **This is a default readme for extension. Read [design-doc](design-doc.md) instead.**
 
